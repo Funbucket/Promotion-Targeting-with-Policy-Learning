@@ -1,6 +1,6 @@
-# 누구에게 어떤 프로모션을 제공해야 할까?
+# Promotion Targeting with Policy Learning
 
-**예산 제약 하의 정책학습(Policy Learning) 기반 프로모션 타겟팅**
+**Budget-constrained treatment allocation using causal policy learning**
 
 > 제한된 예산 안에서 누구에게 어떤 프로모션을 제공해야 전체 순이익이 가장 커질까?
 
@@ -16,15 +16,15 @@
 
 ## 핵심 결과
 
-| 정책 | 1인당 평균 순이익 | 무처치 대비 |
+| 정책 | 고객사당 평균 순이익 | 처치 없음 대비 |
 | --- | ---: | ---: |
-| 무처치 (all none) | $7,249 | — |
+| 처치 없음 (all none) | $7,249 | - |
 | 최선의 단일 처치 (전원 기술지원) | $10,527 | +45% |
 | **고객별 타겟팅 (DRLearner plug-in)** | **$11,798** | **+63%** |
 
-- 고객별 타겟팅은 최선의 단일 처치 정책보다 약 **12%**, 무처치 대비 약 **63%** 높은 순이익.
+- 고객별 타겟팅은 최선의 단일 처치 정책보다 약 **12%**, 처치 없음 대비 약 **63%** 높은 순이익.
 - 처치 배정을 좌우하는 핵심 요인은 **직원 수(42%)와 고객 규모(38%)**.
-- 예산 수준에 따라 최적 정책이 달라짐(소액 예산 → 전원 기술지원, 중간 예산 이상 → 학습 정책).
+- 예산 수준에 따라 최적 정책이 달라짐(소액 예산 -> 전원 기술지원, 중간 예산 이상 -> 학습 정책).
 
 ## 방법론
 
@@ -36,11 +36,36 @@
 
 | 파일 | 설명 |
 | --- | --- |
-| `who_should_be_treated_ko.ipynb` | 전체 분석 노트북 (코드 + 결과 + 해설) |
-| `paper/whitepaper.pdf` | 코드를 숨긴 컨설팅 백서 형식 리포트 (한국어) |
-| `paper/whitepaper.tex` | 백서 LaTeX 소스 |
-| `figures/` | 백서에 사용된 그림 (노트북 실행 시 생성) |
-| `build_notebook.py` | 노트북 생성 스크립트 |
+| `promotion_targeting_policy_learning_ko.ipynb` | 전체 분석 노트북 (코드 + 결과 + 해설) |
+| `reports/promotion_targeting_policy_learning_whitepaper.pdf` | 코드를 숨긴 컨설팅 리포트 (한국어) |
+| `reports/promotion_targeting_policy_learning_whitepaper.tex` | 리포트 LaTeX 소스 |
+| `figures/` | 리포트에 사용된 그림 (노트북 실행 시 생성) |
+
+## 폴더 구조
+
+```text
+Promotion-Targeting-with-Policy-Learning/
+├── README.md
+├── requirements.txt
+├── promotion_targeting_policy_learning_ko.ipynb
+├── data/
+│   └── multi_attribution_sample.csv
+├── reports/
+│   ├── promotion_targeting_policy_learning_whitepaper.pdf
+│   └── promotion_targeting_policy_learning_whitepaper.tex
+├── figures/
+│   ├── fig01_cost_dist.png
+│   ├── fig02_covariate_means.png
+│   ├── fig03_revenue_dist.png
+│   ├── fig04_propensity.png
+│   ├── fig05_policy_tree.png
+│   ├── fig06_feature_importance.png
+│   ├── fig07_policy_value.png
+│   ├── fig08_cost_curve.png
+│   └── fig09_cost_validation.png
+└── assets/
+    └── AJStyles&Undertaker.jpg
+```
 
 ## 재현 방법
 
@@ -50,17 +75,15 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # 2) 노트북 실행 (figures/ 자동 생성)
-jupyter nbconvert --to notebook --execute --inplace who_should_be_treated_ko.ipynb
+jupyter nbconvert --to notebook --execute --inplace promotion_targeting_policy_learning_ko.ipynb
 
-# 3) 백서 PDF 컴파일 (XeLaTeX + kotex 필요)
-cd paper && xelatex whitepaper.tex && xelatex whitepaper.tex
+# 3) 리포트 PDF 컴파일 (XeLaTeX + kotex 필요)
+cd reports && xelatex promotion_targeting_policy_learning_whitepaper.tex && xelatex promotion_targeting_policy_learning_whitepaper.tex
 ```
-
-> 노트북을 다시 만들고 싶다면 `python build_notebook.py`로 재생성할 수 있습니다.
 
 ## 데이터
 
-`data/multi_attribution_sample.csv` — 약 2,000명의 고객 특성·개입·매출. 비용 정보는 고객 특성에 따라 시뮬레이션해 사용합니다.
+`data/multi_attribution_sample.csv` - 약 2,000곳의 고객 특성·개입·매출. 비용 정보는 고객 특성에 따라 시뮬레이션해 사용합니다.
 
 ## 참고 자료
 
@@ -70,4 +93,4 @@ cd paper && xelatex whitepaper.tex && xelatex whitepaper.tex
 
 ---
 
-*Written by Haechang Cho · [GitHub](https://github.com/Funbucket) · [LinkedIn](https://www.linkedin.com/in/hae-chang-cho/)*
+*Written by 조해창 · [GitHub](https://github.com/Funbucket) · [LinkedIn](https://www.linkedin.com/in/hae-chang-cho/)*
