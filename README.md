@@ -83,9 +83,7 @@ cd reports && xelatex promotion_targeting_policy_learning_whitepaper.tex && xela
 
 ## 데이터
 
-데이터는 Microsoft의 공개 샘플 `multi_attribution_sample.csv`를 사용했습니다.
-
-https://microsoft.github.io/SynapseML/docs/Explore%20Algorithms/Causal%20Inference/Quickstart%20-%20Measure%20Causal%20Effects/
+데이터는 Microsoft의 공개 샘플 [`multi_attribution_sample.csv`](https://microsoft.github.io/SynapseML/docs/Explore%20Algorithms/Causal%20Inference/Quickstart%20-%20Measure%20Causal%20Effects/)를 사용했습니다.
 
 `data/multi_attribution_sample.csv` - 약 2,000곳의 고객 특성·개입·매출. 비용 정보는 고객 특성에 따라 시뮬레이션해 사용합니다.
 
