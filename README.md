@@ -4,7 +4,7 @@
 
 > 제한된 예산 안에서 누구에게 어떤 프로모션을 제공해야 전체 순이익이 가장 커질까?
 
-한 소프트웨어 회사가 고객에게 *기술지원*과 *할인* 두 가지 프로모션을 제공할 수 있을 때(조합 시 4가지 처치), **관찰 데이터**로부터 고객별 최적 처치를 학습하고 평가하는 데이터 분석 포트폴리오입니다.
+한 소프트웨어 회사가 고객에게 *기술지원*과 *할인* 두 가지 프로모션을 제공할 수 있을 때(조합 시 4가지 처치), **관찰 데이터**를 활용해 고객별 최적 처치와 예산 제약 하의 순이익을 평가하는 프로젝트입니다.
 
 분석은 다섯 가지 비즈니스 질문으로 구성됩니다.
 
@@ -82,6 +82,10 @@ cd reports && xelatex promotion_targeting_policy_learning_whitepaper.tex && xela
 ```
 
 ## 데이터
+
+데이터는 Microsoft의 공개 샘플 `multi_attribution_sample.csv`를 사용했습니다.
+
+https://microsoft.github.io/SynapseML/docs/Explore%20Algorithms/Causal%20Inference/Quickstart%20-%20Measure%20Causal%20Effects/
 
 `data/multi_attribution_sample.csv` - 약 2,000곳의 고객 특성·개입·매출. 비용 정보는 고객 특성에 따라 시뮬레이션해 사용합니다.
 
